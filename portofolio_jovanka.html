@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jovanka Loei | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Reset & Variables (Deep Ocean Blue & Gold Accent) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #002147; /* Deep Ocean Blue */
+            --accent-color: #ffc72c; /* Gold/Yellow Neon */
+            --light-bg: #eef4f9;     /* Light Blue-Gray */
+            --dark-bg: #001a35;      /* Navy Tua */
+            --text-color: #333333;
+            --white: #ffffff;
+            --shadow-dark: rgba(0, 33, 71, 0.6); 
+            --shadow-light: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+            perspective: 1000px;
+        }
+
+        /* General Styling */
+        a { text-decoration: none; color: var(--accent-color); transition: color 0.3s; }
+        section { padding: 120px 20px; margin-bottom: 30px; overflow: hidden; }
+
+        h2 {
+            font-size: 3.2em; margin-bottom: 60px; text-align: center;
+            color: var(--primary-color); font-weight: 800; text-transform: uppercase;
+        }
+
+        h2::after {
+            content: ''; width: 100px; height: 6px; background-color: var(--accent-color);
+            display: block; margin: 15px auto 0; border-radius: 3px;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--dark-bg); box-shadow: 0 4px 20px var(--shadow-dark);
+            position: sticky; top: 0; z-index: 100;
+        }
+        nav {
+            max-width: 1300px; margin: 0 auto; padding: 18px 30px; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.8em; font-weight: 800; color: var(--accent-color); }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li a {
+            color: var(--white); padding: 10px 18px; font-weight: 600;
+            transition: color 0.3s, background-color 0.3s; border-radius: 5px; text-transform: uppercase;
+        }
+        .nav-links li a:hover { color: var(--accent-color); background-color: var(--primary-color); }
+
+        /* Profile Section (Hero) */
+        .hero {
+            min-height: 90vh; background: var(--primary-color); color: var(--white);
+            display: flex; justify-content: center; align-items: center; text-align: center;
+            box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .profil-foto {
+            width: 220px; height: 220px; border-radius: 50%; object-fit: cover; margin-bottom: 30px;
+            border: 8px solid var(--accent-color);
+            box-shadow: 0 0 0 10px rgba(255, 199, 44, 0.3), 0 0 20px var(--shadow-dark);
+            transition: transform 0.5s;
+        }
+        .hero h1 { font-size: 4.5em; margin-bottom: 5px; font-weight: 800; color: var(--white); text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); }
+        .tagline { font-size: 2em; color: var(--accent-color); margin-bottom: 40px; font-weight: 600; }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block; padding: 16px 45px; margin-top: 30px; border-radius: 50px;
+            background-color: var(--accent-color); color: var(--primary-color); font-weight: 700;
+            text-transform: uppercase; box-shadow: 0 8px 20px rgba(255, 199, 44, 0.6);
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #ffd86d; transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(255, 199, 44, 0.8);
+        }
+
+        /* Card Styling for Sections */
+        .section-card {
+            background-color: var(--white); max-width: 1200px; margin: 0px auto 60px auto;
+            border-radius: 20px; box-shadow: 0 15px 40px var(--shadow-dark); 
+            padding: 60px; transition: box-shadow 0.5s;
+        }
+
+        /* Experience List (3-column grid) */
+        .experience-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; padding: 20px 0;
+        }
+
+        /* Certificate Grid Overrides */
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; padding: 20px 0;
+        }
+
+        /* Academic Cert Grid (2-column for 4 items) */
+        #academic-cert .certificate-grid {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        @media (max-width: 900px) {
+            #academic-cert .certificate-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                max-width: 1200px;
+            }
+        }
+
+
+        /* Custom Grids (Shop/Education/Organization) */
+        .single-col-grid {
+            display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 600px; margin: 0 auto; padding: 20px 0;
+        }
+
+        /* Adjusting single-col-grid for Community section to be wider */
+        #community .single-col-grid {
+            max-width: 900px; 
+            margin: 0 auto;
+        }
+
+        .double-col-grid {
+            display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 700px; margin: 0 auto; padding: 20px 0;
+        }
+        /* Organization section uses this double-col-grid for 4 items/cards */
+        /* Custom Grids (Shop/Education/Organization) */
+/* ... CSS lainnya ... */
+
+/* Ganti .double-col-grid agar hanya berfungsi sebagai container tunggal untuk Organization */
+#organization .double-col-grid {
+    max-width: 900px; /* Lebar Kartu Organisasi */
+    display: block; /* Menonaktifkan Grid */
+}
+
+.organization-item {
+    border-left: 4px solid var(--accent-color); /* Garis timeline kuning */
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.organization-item:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-left: none; /* Hilangkan garis di item terakhir */
+}
+
+/* Titik di Timeline */
+.organization-item::before {
+    content: '•';
+    position: absolute;
+    left: -12px;
+    top: 5px;
+    font-size: 1.5em;
+    color: var(--primary-color);
+    background: var(--accent-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 1;
+    text-align: center;
+}
+
+.organization-item h4 {
+    font-size: 1.3em;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.organization-item .periode {
+    color: var(--text-color); /* Warna periode tetap hitam */
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.organization-item .organization-logo {
+    width: 100%; /* Lebar penuh dari container item */
+    height: 400px; /* Tinggi yang lebih besar, membuatnya horizontal */
+    object-fit: cover; /* Pastikan gambar mengisi area tanpa distorsi, potong jika perlu */
+    border-radius: 8px; /* Sudut sedikit membulat */
+    margin-bottom: 15px; /* Jarak antara gambar dan teks judul */
+    border: 3px solid var(--accent-color); /* Bingkai kuning */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+        /* Card Flip/3D Effect for items */
+        .card-container { position: relative; height: 300px; transform-style: preserve-3d; }
+        .flip-card {
+            width: 100%; height: 100%; transform-style: preserve-3d;
+            transition: transform 0.8s; cursor: pointer; border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        .card-container:hover .flip-card { transform: rotateY(180deg); }
+        .card-face {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 15px; padding: 30px; display: flex; flex-direction: column;
+            justify-content: space-between; background-color: var(--white);
+            border: 2px solid var(--primary-color);
+        }
+        
+        /* FRONT FACE (Screenshot/Image Focus) */
+        .card-front {
+            background-color: var(--light-bg); border: none; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px; justify-content: flex-start;
+        }
+/* FRONT FACE (Screenshot/Image Focus) */
+/* ... kode CSS lainnya untuk .card-front ... */
+
+.card-front .project-img {
+    width: 100%; 
+    height: 210px; /* NILAI TINGGI BARU (ditingkatkan dari 150px) */
+    object-fit: cover; 
+    border-radius: 10px;
+    margin-bottom: 15px; 
+    border: 3px solid var(--accent-color);
+}
+
+.card-academic .project-img {
+    width: 100%; 
+    height: 260px; /* NILAI TINGGI BARU (ditingkatkan dari 150px) */
+    object-fit: cover; 
+    border-radius: 10px;
+    margin-bottom: 15px; 
+    border: 3px solid var(--accent-color);
+}
+
+/* ... kode CSS lainnya ... */
+        .card-front .project-title {
+            color: var(--primary-color); font-size: 1.1em; font-weight: 700;
+            margin-bottom: 5px; padding: 0 10px;
+        }
+        .card-front .periode {
+            font-weight: 600; color: var(--text-color); font-size: 0.8em;
+            display: block; padding: 0 10px;
+        }
+
+        /* BACK FACE (Details/Link) */
+        .card-back {
+            background-color: var(--primary-color); color: var(--white);
+            transform: rotateY(180deg); justify-content: center; align-items: center; text-align: center;
+            box-shadow: 0 10px 30px var(--shadow-dark);
+        }
+        .card-back p { font-size: 1.1em; margin-bottom: 20px; }
+        .card-back a {
+            color: var(--accent-color); font-weight: 700; text-transform: uppercase;
+            border: 1px solid var(--accent-color); padding: 8px 20px; border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .card-back a:hover { background-color: var(--accent-color); color: var(--primary-color); }
+
+        /* Certificate specific styling */
+        .certificate-grid .card-container { height: 330px; }
+        .certificateacademic-grid .card-container { height: 360px; }
+        .hakis, .pelatihan, .akademik { background-color: var(--light-bg); }
+
+        /* Custom CSS for Community Card (Non-Flipping, wider layout) */
+        /* Custom CSS for Community Card (Non-Flipping, wider layout) */
+.community-card-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: var(--white);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--primary-color);
+}
+.community-card-box .project-img {
+    width: 100%; 
+    max-height: 450px; /* NILAI TINGGI BARU (ditingkatkan dari 250px) */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 3px solid var(--accent-color);
+}
+.community-card-box .project-title {
+    color: var(--primary-color); 
+    font-size: 1.5em; 
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.community-card-box .periode {
+    font-weight: 600; 
+    color: var(--text-color); 
+    font-size: 1em;
+    display: block; 
+    margin-bottom: 20px;
+}
+/* End of Community Card specific CSS */
+        /* End of Community Card specific CSS */
+
+        /* Skills (Retained professional style) */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
+        .skill-category {
+            max-width: 45%; min-width: 350px; padding: 30px; border-radius: 15px;
+            background: var(--light-bg);
+            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.05), inset -5px -5px 10px var(--shadow-light);
+            /* --- Perbaikan layout tags --- */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .skill-category h4 {
+            color: var(--primary-color); margin-bottom: 20px; text-align: center;
+            font-size: 1.4em; font-weight: 700; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px;
+            width: 80%; /* Memberi lebar agar garis bawah terlihat rapi */
+        }
+        /* Kontainer baru untuk tags agar bisa wrap */
+        .skill-tags-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Pusatkan tags */
+            gap: 8px; /* Jarak antar tags */
+            margin-top: 10px; /* Jarak dari judul */
+        }
+        .skill-tag {
+            background-color: var(--primary-color); color: var(--accent-color);
+            padding: 10px 20px; border-radius: 5px; 
+            font-size: 0.9em; font-weight: 600;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); transition: background-color 0.3s;
+        }
+        .skill-tag:hover { background-color: var(--accent-color); color: var(--primary-color); }
+        
+        /* Footer (Retained dark style) */
+        footer {
+            text-align: center; padding: 50px 20px; background-color: var(--dark-bg);
+            color: var(--white);
+        }
+        .social-links { margin: 20px 0; font-size: 1.1em; }
+        .social-links a { color: var(--accent-color); font-weight: 600; margin: 0 15px; }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3em; }
+            .tagline { font-size: 1.5em; }
+            h2 { font-size: 2.5em; }
+            .skills-container { flex-direction: column; align-items: center; }
+            .skill-category { min-width: unset; width: 90%; } /* Sesuaikan lebar kategori skill pada mobile */
+        }
+
+        /* Custom Grid for Education Section (Two columns for details and photo/gpa) */
+.education-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Dua kolom: detail di kiri, media/gpa di kanan */
+    gap: 40px;
+    align-items: center; /* Memastikan konten berada di tengah vertikal */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .education-content {
+        grid-template-columns: 1fr; /* Tumpuk kolom di perangkat kecil */
+    }
+}
+
+.gpa-box {
+    /* PENYESUAIAN AGRESIF UNTUK UKURAN KECIL */
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 10px 15px; /* Sangat diperkecil */
+    border-radius: 8px; 
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(255, 199, 44, 0.4);
+    font-weight: 700;
+    margin-bottom: 20px; 
+    
+    /* Batasi lebar hanya sebesar kontennya */
+    width: fit-content; 
+    margin: 0 auto 20px auto; /* Pusatkan dan beri margin bawah */
+    
+    /* Layout Flex untuk menyusun Teks Vertikal Rapi */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gpa-box h4 {
+    font-size: 0.75em; /* Sangat diperkecil */
+    margin-bottom: 0px; /* Hapus margin bawah */
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.gpa-box p {
+    font-size: 1.5em; /* Diperkecil lagi */
+    font-weight: 900;
+    line-height: 1;
+}
+
+.campus-photo-container img {
+    width: 100%;
+    height: 250px; /* Tinggi foto yang tetap */
+    object-fit: cover;
+    border-radius: 15px;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">PORTFOLIO</div>
+            <ul class="nav-links">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#organization">Organization</a></li>
+                <li><a href="#training-cert">Certifications</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="profile" class="hero">
+            <div class="profil-content">
+                <img src="img/Gemini_Generated_Image_5q518t5q518t5q51.png" alt="Your Profile Photo" class="profil-foto"> 
+                <h1>I'M JOVANKA LOEI</h1>
+                <p class="tagline">Data Analyst | Business Intelligence</p>
+                <p style="max-width: 800px; margin: 0 auto; font-size: 1.1em;">Analytical and detail-oriented Digital Commerce enthusiast with hands-on data analysis experience. Skilled in <strong>Excel, Python, Tableau, </strong>and <strong>machine learning </strong>with a strong ability to transform raw data into actionable business insights.</p>
+                <a href="#contact" class="cta-button">Engage for Partnership</a>
+            </div>
+        </section>
+
+        <section id="education" class="section-card">
+    <h2>🎓 EDUCATION</h2>
+            <div class="education-content">
+            
+                <div>
+                    <div class="gpa-box">
+                        <h4>Cumulative GPA (Current)</h4>
+                        <p>3.95/4.00</p> 
+                    </div>
+
+                    <div class="timeline-item" style="padding: 20px; border-left: 5px solid var(--primary-color); padding-left: 20px;">
+                        <h4>Multimedia Nusantara Polytechnic</h4>
+                        <p class="periode">2023 - 2027</p>
+                        <p>Bachelor of Applied Science, Digital Commerce & Supply Chain</p>
+                    </div>
+                </div>
+
+                <div class="campus-photo-container">
+                    <img src="img/mnp.jpg" alt="Foto Kampus Multimedia Nusantara Polytechnic">
+                </div>
+
+            </div>
+        </section>
+
+        <section id="experience" class="section-card">
+            <h2>💼 EXPERIENCE</h2>
+            <div class="experience-list">
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front">
+                            <img src="img/jasung.png" alt="Project Screenshot 1" class="project-img">
+                            <span class="project-title">Web Development & Analytics</span>
+                            <span class="periode">PT Limov Power Structure & Jasung Indonesia | Sep 2025 - Present</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Developed Jasung Indonesia’s website interface with PHP–Laravel and analyzed customer behavior using Google Analytics.</p>
+                            <a href="https://jasung.diskon.com/" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front">
+                            <img src="img/borde data cleaning.png" alt="Project Screenshot 2" class="project-img">
+                            <span class="project-title">Sales Performance Analyst</span>
+                            <span class="periode">Borde Perfume | June 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Cleaned and transformed data using Excel, Python, and Tableau to visualize and identify seasonal sales trends and top-performing products.</p>
+                            <a href="https://drive.google.com/file/d/1n1hR-cjc3YOuUGMMxIH77KMwSMlCrD5m/view?usp=sharing" target="_blank">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front">
+                            <img src="img/Screenshot 2025-11-14 020221.png" alt="Project Screenshot 3" class="project-img">
+                            <span class="project-title">Website Development</span>
+                            <span class="periode">Online Shop Jokuraku | Oct 2024</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Developed Jokuraku website with PHP–Laravel and managed MySQL database for products, orders, and users.</p>
+                            <a href="https://drive.google.com/file/d/1riOjfXroTwDCh-nn6M3235luv99ucsjD/view?usp=drive_link" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front">
+                            <img src="img/Dashboard 1.png" alt="Project Screenshot 4" class="project-img">
+                            <span class="project-title">E-Commerce Sales Visualization</span>
+                            <span class="periode">Tableau Dashboard | Nov 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Created an e-commerce sales dashboard in Tableau to visualize sales trends and performance.</p>
+                            <a href="https://drive.google.com/file/d/1tWMXXydJup9MvdH6raAe-UDE2j4kiTTB/view?usp=sharing" target="_blank">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front">
+                            <img src="img/Screenshot 2025-11-14 020706.png" alt="Project Screenshot 5" class="project-img">
+                            <span class="project-title">Sales Reporting</span>
+                            <span class="periode">Power BI | Nov 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Created a sales report in Power BI to track performance and visualize key metrics.</p>
+                            <a href="https://drive.google.com/file/d/1Q8cBL0Gm2kVwsRbanghaly9l5ntBjpxE/view?usp=sharing" target="_blank">View Study Case</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front">
+                            <img src="img/Screenshot 2025-11-14 021136.png" alt="Project Screenshot 6" class="project-img">
+                            <span class="project-title">E-Commerce Management</span>
+                            <span class="periode">Borde Perfume | Feb 2025 - June 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Improved Shopee store, boosting sales by 324% and visitors by 99% through Shopee and TikTok Videos.</p>
+                            <a href="https://shopee.co.id/officialborde_?categoryId=100630&entryPoint=ShopByPDP&itemId=27184038803&upstream=search" target="_blank">See More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="onlineshop" style="background-color: var(--light-bg); color: var(--text-color);">
+            <div class="section-card" style="margin-bottom: 0;">
+                <h2 style="color: var(--primary-color);">🛍️ E-COMMERCE STORE MANAGER</h2>
+                
+                <div class="single-col-grid">
+                    <div class="product-card" style="padding: 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);">
+                        <img src="img/shopee.png" alt="Shop Screenshot 1" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; border: 2px solid var(--accent-color);">
+                        <h4>Shopee</h4>
+                        <p>Achieved Star Badge Seller with 4.8/5.0 rating from 800+ reviews, 1.5K transactions, 3.6K products sold.</p>
+                        <a href="https://shopee.co.id/jo_kuraku?entryPoint=ShopBySearch&searchKeyword=jo_kuraku" target="_blank" class="cta-button" style="padding: 10px 20px; font-size: 0.9em; box-shadow: 0 3px 10px rgba(255, 199, 44, 0.4);">Visit Shop</a>
+                    </div>
+                    <div class="product-card" style="padding: 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);">
+                        <img src="img/tiktok.png" alt="Shop Screenshot 2" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; border: 2px solid var(--accent-color);">
+                        <h4>TikTok & Tokopedia Seller</h4>
+                        <p>Rp 2.3M+ GMV in the first month.</p>
+                        <a href="https://www.tiktok.com/@aknavojoo?lang=en" target="_blank" class="cta-button" style="padding: 10px 20px; font-size: 0.9em; box-shadow: 0 3px 10px rgba(255, 199, 44, 0.4);">Visit Shop</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="community" class="section-card">
+            <h2>🤝 COMMUNITY SERVICE</h2>
+            <div class="single-col-grid">
+                <div class="community-card-box">
+                    <img src="img/sukawali.png" alt="Community Documentation Photo" class="project-img">
+                    <span class="project-title">WordPress-Based Website Development</span>
+                    <span class="periode">Dec 2024 - Present</span>
+                    <p style="padding: 0 20px;">Implemented responsive and user-friendly design to promote UP2K products from Sukawali Village.</p>
+                    <a href="https://desasukawali.com/" target="_blank">View Project</a>
+                </div>
+            </div>
+        </section>
+        
+<section id="organization" class="section-card">
+    <h2>🏛️ ORGANIZATION EXPERIENCE</h2>
+    
+    <div class="double-col-grid">
+
+        <div class="organization-item">
+            <img src="img/LOGO HORIZONTAL WARNA.png" alt="Organization Logo 1" class="organization-logo">
+        <div class="organization-item">
+            <h4>Secretary & Treasurer</h4>
+            <span class="periode">Student Association of Digital Commerce & Supply Chain | Oct 2024 - Jan 2026</span>
+            <p>Managed documentation, correspondence, and financial reporting for the association.</p>
+        </div>
+        
+        <div class="organization-item">
+            <h4>Commite of Campus Open Day (Stan)</h4>
+            <span class="periode">Student Association of Digital Commerce & Supply Chain | May 2025</span>
+            <p>Served as a committee member for Campus Open Day (Stan), assisting in event organization and coordination.</p>
+        </div>
+        
+        <div class="organization-item">
+            <h4>Sponsorship Division</h4>
+            <span class="periode">E-Commerce Logistics Festival | Jan 2025 - Sep 2025</span>
+            <p>Secured 14 sponsors for the event.</p>
+        </div>
+        
+        <div class="organization-item">
+            <h4>Secretary & Treasurer Coordinator of E-Trip 2025</h4>
+            <span class="periode">Student Association of Digital Commerce & Supply Chain | Nov 2025</span>
+            <p>Secretary & Treasurer Coordinator for E-Trip 2025, handling administrative and financial tasks.</p>
+        </div>
+
+    </div>
+</section>
+        
+        <section id="training-cert" class="section-card">
+            <h2>🏆 TRAINING CERTIFICATIONS</h2>
+            <div class="certificate-grid">
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front hakis">
+                            <img src="img/9388511_96942001763004926873_page-0001.jpg" alt="IPR Screenshot" class="project-img">
+                            <span class="project-title">Power BI</span>
+                            <span class="periode">Nov 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>A beginner guide to creating interactive data visualizations, reports, and dashboards using Power BI.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front pelatihan">
+                            <img src="img/da sql pyt.jpg" alt="Training Screenshot" class="project-img">
+                            <span class="project-title">Data Analyst SQL & Python</span>
+                            <span class="periode">Oct 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Extracted and analyzed data with SQL and Python. Built dashboards and visualizations to communicate insights.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front pelatihan">
+                            <img src="img/excel.jpg" alt="Training Screenshot 3" class="project-img">
+                            <span class="project-title">Data Analyst Excel</span>
+                            <span class="periode">Oct 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Analyzed and managed data with Excel. Data preparation and formatting, standardizing data for analysis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front pelatihan">
+                            <img src="img/ml.jpg" alt="Training Screenshot 4" class="project-img">
+                            <span class="project-title">Machine Learning & AI</span>
+                            <span class="periode">Oct 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Completed a Python course on control structures, loops, functions, and basic data visualization.</p>
+          
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front pelatihan">
+                            <img src="img/sql.jpg" alt="Training Screenshot 5" class="project-img">
+                            <span class="project-title">Fundamental SQL</span>
+                            <span class="periode">Aug 2024</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Completed an SQL course covering relational databases, SELECT queries, filters, aliases, and a mini project.</p>
+             
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front pelatihan">
+                            <img src="img/r.jpg" alt="Training Screenshot 6" class="project-img">
+                            <span class="project-title">R Fundamental</span>
+                            <span class="periode">Year: 2021</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Completed an R course covering data structures, charts, and basic data visualization.</p>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="academic-cert" class="section-card">
+            <h2>📚 ACADEMIC ACHIEVEMENTS</h2>
+            <div class="certificate-grid">
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-academic akademik">
+                            <img src="img/Best Student 2023.jpg" alt="Academic Screenshot 1" class="project-img">
+                            
+                            
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Recognized for adaptability in E-Commerce Logistics.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-academic akademik">
+                            <img src="img/Academic 2024.jpg" alt="Academic Screenshot 2" class="project-img">
+                            
+                            
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Achieved academic recognition in E-Commerce Logistics.</p>
+                     
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-academic akademik">
+                            <img src="img/E-Commerce Logistics ACE 2024.jpg" alt="Academic Screenshot 3" class="project-img">
+                            
+                            
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Recognizing contributions in both academic and non-academic activities (ACE).</p>
+                           
+                        </div>
+                        </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-academic akademik">
+                            <img src="img/Academic Champion 2025.jpg" alt="Academic Screenshot 4" class="project-img">
+                            
+                         
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Recognized for consistent performance in academic activities.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-card">
+            <h2>🛠️ SKILLS</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4>Soft Skill</h4>
+                    <div class="skill-tags-wrapper">
+                        <span class="skill-tag">Analytical Thinking</span>
+                        <span class="skill-tag">Attention to Detail</span>
+                        <span class="skill-tag">Problem-Solving</span>
+                        <span class="skill-tag">Adaptability</span>
+                        <span class="skill-tag">Team Work</span>
+                        <span class="skill-tag">Storytelling with Data</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Hard Skill</h4>
+                    <div class="skill-tags-wrapper">
+                        <span class="skill-tag">Microsoft</span>
+                        <span class="skill-tag">Google Workspace</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">E-Commerce Platforms</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact">
+            <p style="font-size: 1.2em; font-weight: 600;">Let's Build Something Revolutionary Together.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/jovanka-loei-44254337b/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> |
+                <a href="mailto:jovankaloei05@gmail.com"><i class="fas fa-envelope"></i> Email</a> |
+                <a href="files/CV Jovanka Loei.pdf Jovanka Loei.pdf" download="Jovanka_Loei_CV.pdf">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+            <p style="margin-top: 15px;">&copy; 2025 Jovanka Loei. All Rights Reserved.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
