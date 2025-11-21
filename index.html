@@ -421,6 +421,96 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* --- TATA LETAK ZIG-ZAG UTAMA --- */
+.project-features-list {
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.project-feature-item {
+    display: flex;
+    align-items: center; 
+    gap: 40px;
+    margin-bottom: 80px; 
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--light-bg); 
+}
+
+/* Mengatur urutan untuk item reverse (Deskripsi Kiri, Foto Kanan) */
+.project-feature-item.reverse {
+    flex-direction: row-reverse;
+    background-color: #f5f5f5; 
+}
+
+/* Mengatur Lebar Kolom */
+.project-feature-media,
+.project-feature-content {
+    flex: 1; /* Memastikan keduanya memakan lebar yang sama (50/50) */
+}
+
+/* --- KONTROL GAMBAR FIXED HEIGHT --- */
+.project-feature-media {
+    flex: 1; 
+    /* TINGGI TETAP: Ini yang membuat semua foto seragam tingginya */
+    height: 350px; 
+    
+    position: relative; 
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* img HARUS position: absolute untuk mengisi 100% tinggi kontainer (350px) */
+.project-feature-media img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar memenuhi kotak tanpa terdistorsi */
+}
+
+/* --- KONTEN DESKRIPSI --- */
+.project-feature-content {
+    padding: 10px 0;
+}
+
+.project-feature-content h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.tech-badges {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+/* --- RESPONSIVENESS (Untuk Layar Mobile) --- */
+@media (max-width: 800px) {
+    .project-feature-item,
+    .project-feature-item.reverse {
+        /* Susun item secara vertikal di mobile */
+        flex-direction: column; 
+        padding: 20px 10px;
+        gap: 20px;
+    }
+    
+    .project-feature-media {
+        width: 100%;
+        /* Atur tinggi fixed yang lebih kecil untuk mobile */
+        height: 250px; 
+        position: relative;
+    }
+    .project-feature-media img {
+        position: absolute;
+        height: 100%;
+    }
+}
+
 
     </style>
 </head>
@@ -473,6 +563,64 @@
                     <img src="img/mnp.jpg" alt="Foto Kampus Multimedia Nusantara Polytechnic">
                 </div>
 
+            </div>
+        </section>
+
+                <section id="academic-cert" class="section-card">
+            <h2>📚 ACADEMIC ACHIEVEMENTS</h2>
+            <div class="certificate-grid">
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-academic akademik">
+                            <img src="img/Best Student 2023.jpg" alt="Academic Screenshot 1" class="project-img">
+                            
+                            
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Recognized for adaptability in E-Commerce Logistics.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-academic akademik">
+                            <img src="img/Academic 2024.jpg" alt="Academic Screenshot 2" class="project-img">
+                            
+                            
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Achieved academic recognition in E-Commerce Logistics.</p>
+                     
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-academic akademik">
+                            <img src="img/E-Commerce Logistics ACE 2024.jpg" alt="Academic Screenshot 3" class="project-img">
+                            
+                            
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Recognizing contributions in both academic and non-academic activities (ACE).</p>
+                           
+                        </div>
+                        </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-academic akademik">
+                            <img src="img/Academic Champion 2025.jpg" alt="Academic Screenshot 4" class="project-img">
+                            
+                         
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Recognized for consistent performance in academic activities.</p>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -559,6 +707,83 @@
                 </div>
             </div>
         </section>
+
+<section id="projects" class="section-card">
+    <h2>💻 PERSONAL PROJECTS & CASE STUDIES</h2>
+    
+    <div class="project-features-list">
+
+        <div class="project-feature-item">
+            
+    <div class="project-feature-media">
+        <iframe 
+            style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+            width="100%" 
+            height="100%" 
+            src="https://embed.figma.com/proto/Is4GPmKqXw3uouhBS96Kuu/SAD_Week5_JovankaLoei_23401010185?node-id=5-90&starting-point-node-id=5%3A90&scaling=scale-down-width&content-scaling=fixed&embed-host=share" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+    <div class="project-feature-content">
+        <h3>UI/UX Prototype and User Flow Design for the MNP Web Platform</h3>
+        <span class="tech-badges">User Flow • Figma • Information Architecture</span>
+        <p>This project presents the functional UI/UX prototype for the MNP web platform, utilizing Figma to visualize the entire user journey and core system architecture.</p>
+        <a href="https://www.figma.com/proto/Is4GPmKqXw3uouhBS96Kuu/SAD_Week5_JovankaLoei_23401010185?node-id=5-90&starting-point-node-id=5%3A90&scaling=scale-down-width&content-scaling=fixed&embed-host=share" target="_blank" class="cta-button secondary">See Detail</a>
+    </div>
+    
+</div>
+        
+
+        <div class="project-feature-item reverse">
+            
+            <div class="project-feature-media">
+                <img src="img/actdiagram.png" alt="Machine Learning Model">
+            </div>
+            
+            <div class="project-feature-content">
+                <h3>End-to-End Workflow Analysis using Activity Diagram</h3>
+                <span class="tech-badges">UML • Draw.io • BPM</span>
+                <p>Illustrates the detailed workflow of the Jokuraku Online Shop. Clearly maps the step-by-step responsibilities of the Customer, System, and Admin within the purchasing process.</p>
+                <a href="https://drive.google.com/file/d/1dHOKbex_F5A4nEH7Szlkm6ihdGxsAgw2/view?usp=sharing" target="_blank" class="cta-button secondary">See Detail</a>
+            </div>
+            
+        </div>
+
+        <div class="project-feature-item">
+            
+            <div class="project-feature-media">
+                <img src="img/usecase.png" alt="Project Report Title">
+            </div>
+            
+            <div class="project-feature-content">
+                <h3>UML Use Case Modeling for Online Shop Systems</h3>
+                <span class="tech-badges">UML • Draw.io • OOAD</span>
+                <p>Use Case Diagram models of the Jokuraku Online Shop. It details the key purchasing and transaction processes for the Customer, alongside product and system management tasks for the Admin.</p>
+                <a href="https://drive.google.com/file/d/102Cus0VJwM1YKRC91PmFUWpjEho2RHPH/view?usp=sharing" target="_blank" class="cta-button secondary">See Detail</a>
+            </div>
+            
+        </div>
+
+            <div class="project-feature-item reverse">
+            
+            <div class="project-feature-media">
+                <img src="img/excel1.png" alt="Machine Learning Model">
+            </div>
+            
+            <div class="project-feature-content">
+                <h3>Advanced Sales Analysis using Excel Pivot Tables</h3>
+                <span class="tech-badges">Advanced Excel Functions • Pivot Tables • Chart</span>
+                <p>This project showcases an in-depth analysis of sales data, utilizing advanced Excel functions and Pivot Tables to identify key performance trends and strategic insights.</p>
+                <a href="https://1drv.ms/x/c/95d12e19c8aa8a80/IQA-KsJMWPGrSK8Ak85kmso6AWxCQBe-6KXaHotKs8zpRlE?e=cpGh6N" target="_blank" class="cta-button secondary">See Detail</a>
+            </div>
+            
+        </div>
+
+
+
+    </div>
+</section>
 
         <section id="onlineshop" class="section-card" style="background-color: var(--white); color: var(--text-color);">
           
@@ -742,64 +967,6 @@
                         <div class="card-face card-back">
                             <p>Completed an R course covering data structures, charts, and basic data visualization.</p>
             
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="academic-cert" class="section-card">
-            <h2>📚 ACADEMIC ACHIEVEMENTS</h2>
-            <div class="certificate-grid">
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-academic akademik">
-                            <img src="img/Best Student 2023.jpg" alt="Academic Screenshot 1" class="project-img">
-                            
-                            
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Recognized for adaptability in E-Commerce Logistics.</p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-academic akademik">
-                            <img src="img/Academic 2024.jpg" alt="Academic Screenshot 2" class="project-img">
-                            
-                            
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Achieved academic recognition in E-Commerce Logistics.</p>
-                     
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-academic akademik">
-                            <img src="img/E-Commerce Logistics ACE 2024.jpg" alt="Academic Screenshot 3" class="project-img">
-                            
-                            
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Recognizing contributions in both academic and non-academic activities (ACE).</p>
-                           
-                        </div>
-                        </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-academic akademik">
-                            <img src="img/Academic Champion 2025.jpg" alt="Academic Screenshot 4" class="project-img">
-                            
-                         
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Recognized for consistent performance in academic activities.</p>
-                            
                         </div>
                     </div>
                 </div>
