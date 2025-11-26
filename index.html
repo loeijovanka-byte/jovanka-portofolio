@@ -107,25 +107,37 @@
             gap: 30px; padding: 20px 0;
         }
 
-        /* Certificate Grid Overrides */
-        .certificate-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; padding: 20px 0;
-        }
+/* === 1. WRAPPER UTAMA === */
+.certificate-wrapper {
+    /* Wrapper ini harus dibiarkan agar Grid dan Flexbox bisa bekerja */
+    max-width: 1000px; 
+    margin: 0 auto;
+}
 
-        /* Academic Cert Grid (2-column for 4 items) */
-        #academic-cert .certificate-grid {
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
-            max-width: 850px;
-            margin: 0 auto;
-        }
-        @media (max-width: 900px) {
-            #academic-cert .certificate-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                max-width: 1200px;
-            }
-        }
+.certificate-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tetap 3 Kolom */
+    gap: 30px;
+    margin-top: 40px; 
+    margin-bottom: 0; /* Penting */
+    width: 100%; /* Memastikan grid memenuhi wrapper 100% */
+}
+
+.centered-row-flex {
+    display: flex;
+    justify-content: center; /* KUNCI: MEMUSATKAN ITEM 4 & 5 */
+    gap: 30px;
+    margin-top: -20px; 
+    margin-bottom: 40px; 
+    width: 100%; /* Memastikan container Flexbox memenuhi wrapper 100% */
+}
+
+/* Aturan Kunci: Mengatur lebar kartu di Flexbox */
+.centered-row-flex .card-container {
+    /* Lebar total 100% dibagi 3, dikurangi sedikit untuk memperhitungkan gap 30px. 
+       Ini membuat lebar item 4 & 5 sama persis dengan lebar kolom di Grid. */
+    width: calc(33.33% - 20px); 
+}
 
 
         /* Custom Grids (Shop/Education/Organization) */
@@ -206,20 +218,60 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-        /* Card Flip/3D Effect for items */
-        .card-container { position: relative; height: 300px; transform-style: preserve-3d; }
-        .flip-card {
-            width: 100%; height: 100%; transform-style: preserve-3d;
-            transition: transform 0.8s; cursor: pointer; border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        }
-        .card-container:hover .flip-card { transform: rotateY(180deg); }
-        .card-face {
-            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-            border-radius: 15px; padding: 30px; display: flex; flex-direction: column;
-            justify-content: space-between; background-color: var(--white);
-            border: 2px solid var(--primary-color);
-        }
+/* Card Flip/3D Effect for items */
+
+/* 1. CONTAINER: TINGGI KARTU KESELURUHAN */
+.card-container { 
+    position: relative; 
+    height: 350px; /* <-- KITA KEMBALIKAN KE 350px AGAR CUKUP LEGA */
+    transform-style: preserve-3d; 
+}
+
+/* 2. FLIP-CARD: Tinggi harus 100% dari .card-container */
+.flip-card {
+    width: 100%; 
+    height: 250px; 
+    transform-style: preserve-3d; 
+    position: relative;
+    transition: transform 0.8s; 
+    cursor: pointer; 
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-container:hover .flip-card { transform: rotateY(180deg); }
+
+/* 3. CARD-FACE: Sisi depan dan belakang kartu */
+.card-face {
+    position: absolute; 
+    width: 100%; 
+    height: 250px; 
+    backface-visibility: hidden;
+    border-radius: 15px; 
+    padding: 20px; /* <-- KURANGI PADDING DI SINI */
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-start; /* Mengatur item dari atas */
+    align-items: center; /* Memusatkan item secara horizontal */
+    background-color: var(--white);
+    border: 2px solid var(--primary-color);
+}
+
+/* 4. PENGATURAN SPESIFIK UNTUK GAMBAR SERTIFIKAT */
+.card-face img {
+    /* Setel tinggi gambar ke persentase tertentu dari tinggi kartu */
+    height: 200px; /* <--- INI KUNCI PENGATURAN TINGGI GAMBAR SERTIFIKAT */
+    width: auto; /* <--- BIARKAN LEBAR MENYESUAIKAN SECARA PROPORSIONAL */
+    object-fit: contain; /* <--- PASTIKAN SELURUH GAMBAR TERLIHAT */
+    margin-bottom: 10px; /* <--- JIKA ADA TEXT DI BAWAHNYA */
+}
+
+/* 5. Teks di bagian belakang kartu */
+.card-back {
+    justify-content: center; /* Memusatkan teks di tengah secara vertikal */
+    align-items: center; /* Memusatkan teks di tengah secara horizontal */
+    text-align: center; /* Untuk teks p */
+}
         
         /* FRONT FACE (Screenshot/Image Focus) */
         .card-front {
@@ -231,7 +283,7 @@
 
 .card-front .project-img {
     width: 100%; 
-    height: 210px; /* NILAI TINGGI BARU (ditingkatkan dari 150px) */
+    height: 350px; /* NILAI TINGGI BARU (ditingkatkan dari 150px) */
     object-fit: cover; 
     border-radius: 10px;
     margin-bottom: 15px; 
@@ -565,71 +617,78 @@
 
             </div>
         </section>
-
-                <section id="academic-cert" class="section-card">
-            <h2>📚 ACADEMIC ACHIEVEMENTS</h2>
-            <div class="certificate-grid">
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-academic akademik">
-                            <img src="img/Best Student 2023.jpg" alt="Academic Screenshot 1" class="project-img">
-                            
-                            
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Recognized for adaptability in E-Commerce Logistics.</p>
-                            
-                        </div>
+<section id="academic-cert" class="section-card">
+    <h2>📚 ACADEMIC ACHIEVEMENTS</h2>
+    
+    <div class="certificate-wrapper">
+        
+        <div class="certificate-grid"> 
+            
+            <div class="card-container">
+                <div class="flip-card">
+                    <div class="card-face card-academic akademik">
+                        <img src="img/Best Student 2023.jpg" alt="Academic Screenshot 1" class="project-img">
                     </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-academic akademik">
-                            <img src="img/Academic 2024.jpg" alt="Academic Screenshot 2" class="project-img">
-                            
-                            
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Achieved academic recognition in E-Commerce Logistics.</p>
-                     
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-academic akademik">
-                            <img src="img/E-Commerce Logistics ACE 2024.jpg" alt="Academic Screenshot 3" class="project-img">
-                            
-                            
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Recognizing contributions in both academic and non-academic activities (ACE).</p>
-                           
-                        </div>
-                        </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-academic akademik">
-                            <img src="img/Academic Champion 2025.jpg" alt="Academic Screenshot 4" class="project-img">
-                            
-                         
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Recognized for consistent performance in academic activities.</p>
-                            
-                        </div>
+                    <div class="card-face card-back">
+                        <p>Recognized for adaptability in E-Commerce Logistics.</p>
                     </div>
                 </div>
             </div>
-        </section>
+            
+            <div class="card-container">
+                <div class="flip-card">
+                    <div class="card-face card-academic akademik">
+                        <img src="img/Academic 2024.jpg" alt="Academic Screenshot 2" class="project-img">
+                    </div>
+                    <div class="card-face card-back">
+                        <p>Achieved academic recognition in E-Commerce Logistics.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-container">
+                <div class="flip-card">
+                    <div class="card-face card-academic akademik">
+                        <img src="img/E-Commerce Logistics ACE 2024.jpg" alt="Academic Screenshot 3" class="project-img">
+                    </div>
+                    <div class="card-face card-back">
+                        <p>Recognizing contributions in both academic and non-academic activities (ACE).</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div> <div class="centered-row-flex"> 
+            
+            <div class="card-container">
+                <div class="flip-card">
+                    <div class="card-face card-academic akademik">
+                        <img src="img/Academic Champion 2025.jpg" alt="Academic Screenshot 4" class="project-img">
+                    </div>
+                    <div class="card-face card-back">
+                        <p>Recognized for consistent performance in academic activities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-container">
+                <div class="flip-card">
+                    <div class="card-face card-academic akademik">
+                        <img src="img/inspirer.jpg" alt="Academic Screenshot 5" class="project-img">
+                    </div>
+                    <div class="card-face card-back">
+                        <p>Outstanding performance and distinguished scholastic achievement.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div> </div> </section>
 
         <section id="experience" class="section-card">
             <h2>💼 EXPERIENCE</h2>
             <div class="experience-list">
                 <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-front">
+                    <div class="flip-card" style="height: 300px;">
+                        <div class="card-face card-front" style="height: 300px;">
                             <img src="img/jasung.png" alt="Project Screenshot 1" class="project-img">
                             <span class="project-title">Web Development & Analytics</span>
                             <span class="periode">PT Limov Power Structure | Sep 2025 - Present</span>
@@ -642,7 +701,7 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front">
+                        <div class="card-face card-front" style="height: 300px;">
                             <img src="img/borde data cleaning.png" alt="Project Screenshot 2" class="project-img">
                             <span class="project-title">Sales Performance Analyst</span>
                             <span class="periode">Borde Perfume | June 2025</span>
@@ -655,9 +714,9 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front">
+                        <div class="card-face card-front" style="height: 300px;">
                             <img src="img/Screenshot 2025-11-14 020221.png" alt="Project Screenshot 3" class="project-img">
-                            <span class="project-title">Online Shop Development</span>
+                            <span class="project-title">Website Development</span>
                             <span class="periode">Online Shop Jokuraku | Oct 2024</span>
                         </div>
                         <div class="card-face card-back">
@@ -668,7 +727,7 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front">
+                        <div class="card-face card-front" style="height: 300px;">
                             <img src="img/Dashboard 1.png" alt="Project Screenshot 4" class="project-img">
                             <span class="project-title">E-Commerce Sales Visualization</span>
                             <span class="periode">Tableau Dashboard | Nov 2025</span>
@@ -681,7 +740,7 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front">
+                        <div class="card-face card-front" style="height: 300px;">
                             <img src="img/Screenshot 2025-11-14 020706.png" alt="Project Screenshot 5" class="project-img">
                             <span class="project-title">Sales Reporting</span>
                             <span class="periode">Power BI | Nov 2025</span>
@@ -694,7 +753,7 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front">
+                        <div class="card-face card-front" style="height: 300px;">
                             <img src="img/Screenshot 2025-11-14 021136.png" alt="Project Screenshot 6" class="project-img">
                             <span class="project-title">E-Commerce Management</span>
                             <span class="periode">Borde Perfume | Feb 2025 - June 2025</span>
@@ -709,7 +768,7 @@
         </section>
 
 <section id="projects" class="section-card">
-    <h2>💻 PROJECTS </h2>
+    <h2>💻 PERSONAL PROJECTS & CASE STUDIES</h2>
     
     <div class="project-features-list">
 
@@ -861,7 +920,7 @@
             
             <div class="card-container">
                 <div class="flip-card">
-                    <div class="card-face card-front">
+                    <div class="card-face card-front" style="height: 320px;">
                         <img src="img/Sertifikat Programming Tutor - Jovanka Loei 8 Oktober_page-0001.jpg" alt="Tutor Certificate 1" class="project-img">
                         <span class="project-title">C Programming Mentoring</span>
                         <span class="periode">EL-Pro | Oct 2024</span>
@@ -875,7 +934,7 @@
 
             <div class="card-container">
                 <div class="flip-card">
-                    <div class="card-face card-front">
+                    <div class="card-face card-front" style="height: 320px;">
                         <img src="img/Sertifikat Programming Tutor - Jovanka Loei 12 Desember_page-0001.jpg" alt="Training Certificate 2" class="project-img">
                         <span class="project-title">C++ Programming Mentoring</span>
                         <span class="periode">EL-Pro | Dec 2024</span>
@@ -897,7 +956,43 @@
             <div class="certificate-grid">
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front hakis">
+                        <div class="card-face card-front hakis" style="height: 340px;">
+                            <img src="img/Achievements - jovankaloei-6838 _ Microsoft Learn cte_page-0001.jpg" alt="IPR Screenshot" class="project-img">
+                            <span class="project-title">Power BI</span>
+                            <span class="periode">Nov 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Clean, Transform, and Load Data in Power BI</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front hakis" style="height: 340px;">
+                            <img src="img/Achievements - jovankaloei-6838 _ Microsoft Learn ux_page-0001.jpg" alt="IPR Screenshot" class="project-img">
+                            <span class="project-title">Power BI</span>
+                            <span class="periode">Nov 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Enhance Power BI Report Designs for The User Experience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front hakis" style="height: 340px;">
+                            <img src="img/Achievements - jovankaloei-6838 _ Microsoft Learn_page-0001.jpg" alt="IPR Screenshot" class="project-img">
+                            <span class="project-title">Power BI</span>
+                            <span class="periode">Nov 2025</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <p>Use DAX Time Intelligence Functions in Semantic Models.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="card-face card-front hakis" style="height: 330px;">
                             <img src="img/9388511_96942001763004926873_page-0001.jpg" alt="IPR Screenshot" class="project-img">
                             <span class="project-title">Power BI</span>
                             <span class="periode">Nov 2025</span>
@@ -909,7 +1004,7 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front pelatihan">
+                        <div class="card-face card-front pelatihan" style="height: 330px;">
                             <img src="img/da sql pyt.jpg" alt="Training Screenshot" class="project-img">
                             <span class="project-title">Data Analyst SQL & Python</span>
                             <span class="periode">Oct 2025</span>
@@ -921,7 +1016,7 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front pelatihan">
+                        <div class="card-face card-front pelatihan" style="height: 330px;">
                             <img src="img/excel.jpg" alt="Training Screenshot 3" class="project-img">
                             <span class="project-title">Data Analyst Excel</span>
                             <span class="periode">Oct 2025</span>
@@ -933,7 +1028,7 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front pelatihan">
+                        <div class="card-face card-front pelatihan" style="height: 330px;">
                             <img src="img/ml.jpg" alt="Training Screenshot 4" class="project-img">
                             <span class="project-title">Machine Learning & AI</span>
                             <span class="periode">Oct 2025</span>
@@ -946,7 +1041,7 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front pelatihan">
+                        <div class="card-face card-front pelatihan" style="height: 330px;">
                             <img src="img/sql.jpg" alt="Training Screenshot 5" class="project-img">
                             <span class="project-title">Fundamental SQL</span>
                             <span class="periode">Aug 2024</span>
@@ -959,7 +1054,7 @@
                 </div>
                 <div class="card-container">
                     <div class="flip-card">
-                        <div class="card-face card-front pelatihan">
+                        <div class="card-face card-front pelatihan" style="height: 330px;">
                             <img src="img/r.jpg" alt="Training Screenshot 6" class="project-img">
                             <span class="project-title">R Fundamental</span>
                             <span class="periode">Year: 2021</span>
@@ -1035,6 +1130,4 @@
 </body>
 
 </html>
-
-
 
