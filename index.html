@@ -174,12 +174,132 @@ nav {
             padding: 60px; transition: box-shadow 0.5s;
         }
 
-        /* Experience List (3-column grid) */
-        .experience-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; padding: 20px 0;
-        }
+/* EXPERIENCE SECTION */
+.experience-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    align-items: start; /* WAJIB */
+}
+
+
+.experience-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.experience-card {
+    background: var(--dark-bg);
+    padding: 0px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    transition: 0.3s ease;
+    color: white;
+    position: relative;
+    overflow: visible;
+}
+
+.experience-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.45),
+        0 0 35px rgba(255, 255, 255, 0.35),
+        0 0 55px rgba(255, 255, 255, 0.25);
+}
+
+
+
+/* Header */
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+}
+
+.exp-header h3 {
+    font-size: 1rem;   /* sebelumnya kemungkinan 1.3–1.4rem */
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.exp-header .periode {
+    font-size: 0.75rem;   /* kecil & rapi */
+    opacity: 0.85;        /* opsional, biar lebih halus */
+    margin: 0;
+}
+
+
+.exp-img {
+    width: 100%;
+    height: 220px;        /* bisa kamu naikkan biar lebih tinggi */
+    object-fit: cover;    /* biar gambar tidak gepeng */
+    border-radius: 12px;  /* optional, biar sudutnya sesuai card */
+    margin-bottom: 12px;  /* kasih jarak ke teks */
+    padding: 10px;
+}
+
+
+.exp-header div {
+    flex: 1;
+}
+
+.periode {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Toggle button */
+.toggle-btn {
+    font-size: 1.4rem;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.experience-card.active .toggle-btn {
+    transform: rotate(180deg);
+}
+
+/* Body */
+.exp-body {
+    padding: 0 18px 18px 18px;
+    margin-top: 12px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+    opacity: 0;
+    display: flex;           /* ← WAJIB */
+    flex-direction: column;  /* ← WAJIB */
+}
+
+.experience-card.active .exp-body {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.exp-body ul {
+    padding-left: 18px;
+    margin-bottom: 10px;
+}
+
+.exp-body ul li {
+    margin-bottom: 6px;
+    line-height: 1.35;
+}
+
+.exp-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    display: inline-block;
+    margin-top: auto;
+}
+
 
 /* === 1. WRAPPER UTAMA === */
 .certificate-wrapper {
@@ -763,88 +883,145 @@ nav {
         </div> </div> </section>
 
         <section id="experience" class="section-card">
-            <h2>💼 EXPERIENCE</h2>
-            <div class="experience-list">
-                <div class="card-container">
-                    <div class="flip-card" style="height: 300px;">
-                        <div class="card-face card-front" style="height: 300px;">
-                            <img src="img/jasung.png" alt="Project Screenshot 1" class="project-img">
-                            <span class="project-title">Web Development & Analytics</span>
-                            <span class="periode">PT Limov Power Structure | Sep 2025 - Present</span>
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Developed Jasung Indonesia’s website interface with PHP–Laravel and analyzed customer behavior using Google Analytics.</p>
-                            <a href="https://jasung.diskon.com/" target="_blank">View Project</a>
-                        </div>
-                    </div>
+    <h2>💼 EXPERIENCE</h2>
+
+    <div class="experience-list">
+
+        <!-- 1. LPS / Jasung -->
+        <div class="experience-card">
+            <img src="img/jasung.png" class="exp-img" />
+
+            <div class="exp-header">
+                <div>
+                    <h3>Web Development & Analytics</h3>
+                    <p class="periode">PT Limov Power Structure | Sep 2025 - Present</p>
                 </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-front" style="height: 300px;">
-                            <img src="img/borde data cleaning.png" alt="Project Screenshot 2" class="project-img">
-                            <span class="project-title">Sales Performance Analyst</span>
-                            <span class="periode">Borde Perfume | June 2025</span>
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Cleaned and transformed data using Excel, Python, and Tableau to visualize and identify seasonal sales trends and top-performing products.</p>
-                            <a href="https://drive.google.com/file/d/1n1hR-cjc3YOuUGMMxIH77KMwSMlCrD5m/view?usp=sharing" target="_blank">View Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-front" style="height: 300px;">
-                            <img src="img/Screenshot 2025-11-14 020221.png" alt="Project Screenshot 3" class="project-img">
-                            <span class="project-title">Website Development</span>
-                            <span class="periode">Online Shop Jokuraku | Oct 2024</span>
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Developed Jokuraku website with PHP–Laravel and managed MySQL database for products, orders, and users.</p>
-                            <a href="https://drive.google.com/file/d/1riOjfXroTwDCh-nn6M3235luv99ucsjD/view?usp=drive_link" target="_blank">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-front" style="height: 300px;">
-                            <img src="img/Dashboard 1.png" alt="Project Screenshot 4" class="project-img">
-                            <span class="project-title">E-Commerce Sales Visualization</span>
-                            <span class="periode">Tableau Dashboard | Nov 2025</span>
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Created an e-commerce sales dashboard in Tableau to visualize sales trends and performance.</p>
-                            <a href="https://drive.google.com/file/d/1tWMXXydJup9MvdH6raAe-UDE2j4kiTTB/view?usp=sharing" target="_blank">View Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-front" style="height: 300px;">
-                            <img src="img/Screenshot 2025-11-14 020706.png" alt="Project Screenshot 5" class="project-img">
-                            <span class="project-title">Sales Reporting</span>
-                            <span class="periode">Power BI | Nov 2025</span>
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Created a sales report in Power BI to track performance and visualize key metrics.</p>
-                            <a href="https://drive.google.com/file/d/1Q8cBL0Gm2kVwsRbanghaly9l5ntBjpxE/view?usp=sharing" target="_blank">View Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="flip-card">
-                        <div class="card-face card-front" style="height: 300px;">
-                            <img src="img/Screenshot 2025-11-14 021136.png" alt="Project Screenshot 6" class="project-img">
-                            <span class="project-title">E-Commerce Management</span>
-                            <span class="periode">Borde Perfume | Feb 2025 - June 2025</span>
-                        </div>
-                        <div class="card-face card-back">
-                            <p>Improved Shopee store, boosting sales by 324% and visitors by 99% through Shopee and TikTok Videos.</p>
-                            <a href="https://shopee.co.id/officialborde_?categoryId=100630&entryPoint=ShopByPDP&itemId=27184038803&upstream=search" target="_blank">See More</a>
-                        </div>
-                    </div>
-                </div>
+                <button class="toggle-btn">⯆</button>
             </div>
-        </section>
+
+            <div class="exp-body">
+                <ul>
+                    <li>Developed Jasung Indonesia website using PHP–Laravel.</li>
+                    <li>Implemented UI/UX improvements, increasing page engagement by 27%.</li>
+                    <li>Integrated Google Analytics & analyzed user behavior patterns.</li>
+                    <li>Optimized performance, reducing load time from 2.9s → 1.7s.</li>
+                </ul>
+                <a class="exp-link" href="https://jasung.diskon.com/" target="_blank">View Project →</a>
+            </div>
+        </div>
+
+        <!-- 2. Borde Data Cleaning -->
+        <div class="experience-card">
+            <img src="img/borde data cleaning.png" class="exp-img" />
+
+            <div class="exp-header">
+                <div>
+                    <h3>Sales Performance Analyst</h3>
+                    <p class="periode">Borde Perfume | June 2025</p>
+                </div>
+                <button class="toggle-btn">⯆</button>
+            </div>
+
+            <div class="exp-body">
+                <ul>
+                    <li>Cleaned and transformed 5,000+ rows of sales data using Excel & Python.</li>
+                    <li>Built Tableau dashboards to identify sales trends & top-performing products.</li>
+                    <li>Detected seasonal peak patterns and contributed insights for marketing strategy.</li>
+                </ul>
+                <a class="exp-link" href="https://drive.google.com/file/d/1n1hR-cjc3YOuUGMMxIH77KMwSMlCrD5m/view?usp=sharing" target="_blank">View Case Study →</a>
+            </div>
+        </div>
+
+        <!-- 3. Jokuraku Website -->
+        <div class="experience-card">
+            <img src="img/Screenshot 2025-11-14 020221.png" class="exp-img" />
+
+            <div class="exp-header">
+                <div>
+                    <h3>Website Development</h3>
+                    <p class="periode">Jokuraku Online Shop | Oct 2024</p>
+                </div>
+                <button class="toggle-btn">⯆</button>
+            </div>
+
+            <div class="exp-body">
+                <ul>
+                    <li>Developed full-stack website using PHP–Laravel.</li>
+                    <li>Designed product management pages for admin & customer flow.</li>
+                    <li>Built MySQL database structure for products, users, and transactions.</li>
+                </ul>
+                <a class="exp-link" href="https://drive.google.com/file/d/1riOjfXroTwDCh-nn6M3235luv99ucsjD/view?usp=drive_link" target="_blank">View Project →</a>
+            </div>
+        </div>
+
+        <!-- 4. Tableau Dashboard -->
+        <div class="experience-card">
+            <img src="img/Dashboard 1.png" class="exp-img" />
+
+            <div class="exp-header">
+                <div>
+                    <h3>E-Commerce Sales Visualization</h3>
+                    <p class="periode">Tableau Dashboard | Nov 2025</p>
+                </div>
+                <button class="toggle-btn">⯆</button>
+            </div>
+
+            <div class="exp-body">
+                <ul>
+                    <li>Created interactive dashboards for sales trends and customer behavior.</li>
+                    <li>Visualized monthly revenue, top categories, and customer segmentation.</li>
+                </ul>
+                <a class="exp-link" href="https://drive.google.com/file/d/1tWMXXydJup9MvdH6raAe-UDE2j4kiTTB/view?usp=sharing" target="_blank">View Case Study →</a>
+            </div>
+        </div>
+
+        <!-- 5. Power BI Report -->
+        <div class="experience-card">
+            <img src="img/Screenshot 2025-11-14 020706.png" class="exp-img" />
+
+            <div class="exp-header">
+                <div>
+                    <h3>Sales Reporting</h3>
+                    <p class="periode">Power BI | Nov 2025</p>
+                </div>
+                <button class="toggle-btn">⯆</button>
+            </div>
+
+            <div class="exp-body">
+                <ul>
+                    <li>Created Power BI dashboard to track store performance & sales growth.</li>
+                    <li>Reported KPIs such as revenue, conversions, and customer acquisition.</li>
+                </ul>
+                <a class="exp-link" href="https://drive.google.com/file/d/1Q8cBL0Gm2kVwsRbanghaly9l5ntBjpxE/view?usp=sharing" target="_blank">View Case Study →</a>
+            </div>
+        </div>
+
+        <!-- 6. Borde Ecommerce -->
+        <div class="experience-card">
+            <img src="img/Screenshot 2025-11-14 021136.png" class="exp-img" />
+
+            <div class="exp-header">
+                <div>
+                    <h3>E-Commerce Management</h3>
+                    <p class="periode">Borde Perfume | Feb 2025 - June 2025</p>
+                </div>
+                <button class="toggle-btn">⯆</button>
+            </div>
+
+            <div class="exp-body">
+                <ul>
+                    <li>Increased sales by 324% through SEO & TikTok/Shopee content optimization.</li>
+                    <li>Improved store visibility and raised monthly visitors by 99%.</li>
+                    <li>Managed product listing, ads optimization, and customer engagement.</li>
+                </ul>
+                <a class="exp-link" href="https://shopee.co.id/officialborde_?itemId=27184038803" target="_blank">See Store →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
 
 <section id="projects" class="section-card">
     <h2>💻 PROJECTS & CASE STUDIES</h2>
@@ -1240,6 +1417,12 @@ nav {
 
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.experience-card').forEach(card => {
+        card.querySelector('.toggle-btn').onclick = () => {
+            card.classList.toggle('active');
+        };
     });
 
 
