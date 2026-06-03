@@ -274,8 +274,7 @@ nav {
     overflow: hidden;
     transition: max-height 0.35s ease, opacity 0.25s ease;
     opacity: 0;
-    display: flex;           /* ← WAJIB */
-    flex-direction: column;  /* ← WAJIB */
+    
 }
 
 .experience-card.active .exp-body {
@@ -787,8 +786,8 @@ nav {
     <div class="profil-content">
         <img src="img/Gemini_Generated_Image_5q518t5q518t5q51.png" alt="Your Profile Photo" class="profil-foto"> 
         <h1>JOVANKA LOEI</h1>
-        <p class="tagline">Data Analyst | Business Intelligence</p>
-        <p style="max-width: 800px; margin: 0 auto; font-size: 1.1em;">Analytical and detail-oriented Digital Commerce enthusiast with hands-on data analysis experience. Skilled in <strong>Excel, Python, Tableau, and Power BI</strong> with a strong ability to transform raw data into actionable business insights. Actively managing e-commerce stores to drive growth and operational efficiency.</p>
+        <p class="tagline">Business Intelligence Intern</p>
+        <p style="max-width: 800px; margin: 0 auto; font-size: 1.1em;">Analytical and detail-oriented Digital Commerce enthusiast with hands-on data analysis experience. Skilled in <strong>Qlik Analytics, Tableau, Power BI, Excel</strong> with a strong ability to transform raw data into actionable business insights. Currently working as a <strong>Business Intelligence Intern</strong>, specializing in Qlik Analytics and NPrinting to develop ETL scripts, interactive dashboards, and automated reporting solutions..</p>
         <a href="#contact" class="cta-button">Contact</a>
     </div>
 </section>
@@ -800,7 +799,7 @@ nav {
                 <div>
                     <div class="gpa-box">
                         <h4>Cumulative GPA (Current)</h4>
-                        <p>3.95/4.00</p> 
+                        <p>3.94/4.00</p> 
                     </div>
 
                     <div class="timeline-item" style="padding: 20px; border-left: 5px solid var(--primary-color); padding-left: 20px;">
@@ -879,6 +878,17 @@ nav {
                     </div>
                 </div>
             </div>
+
+            <div class="card-container">
+                <div class="flip-card">
+                    <div class="card-face card-academic akademik">
+                        <img src="img/pioneer.jpeg" alt="Academic Screenshot 5" class="project-img">
+                    </div>
+                    <div class="card-face card-back">
+                        <p>Taking initiative, executing impactful ideas, and creating new opportunities for others to grow and contribute.</p>
+                    </div>
+                </div>
+            </div>
             
         </div> </div> </section>
 
@@ -889,12 +899,32 @@ nav {
 
         <!-- 1. LPS / Jasung -->
         <div class="experience-card">
+            <img src="img/etl.png" class="exp-img" />
+
+            <div class="exp-header">
+                <div>
+                    <h3>Business Intelligence Intern</h3>
+                    <p class="periode">PT Duta Sarana Inovasi | Jan 2026 - Present</p>
+                </div>
+                <button class="toggle-btn">⯆</button>
+            </div>
+
+            <div class="exp-body">
+                <ul>
+                    <li>Developed dynamic ETL scripts using Qlik Analytics to clean, transform, and standardize multiple client datasets for analysis and reporting with dynamic script.</li>
+                    <li>Created interactive dashboards and automated reporting using Qlik Analytics and Nprinting for client projects, delivering actionable insights, streamlining report generation and distribution processes.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 1. LPS / Jasung -->
+        <div class="experience-card">
             <img src="img/jasung.png" class="exp-img" />
 
             <div class="exp-header">
                 <div>
                     <h3>Web Development & Analytics</h3>
-                    <p class="periode">PT Limov Power Structure | Sep 2025 - Present</p>
+                    <p class="periode">PT Limov Power Structure | Sep 2025 - Dec 2025</p>
                 </div>
                 <button class="toggle-btn">⯆</button>
             </div>
@@ -902,7 +932,7 @@ nav {
             <div class="exp-body">
                 <ul>
                     <li>Developed Jasung Indonesia website using PHP–Laravel.</li>
-                    <li>Implemented UI/UX improvements.</li>
+                    <li>Implemented UI/UX improvements, increasing page engagement by 27%.</li>
                     <li>Integrated Google Analytics & analyzed user behavior patterns.</li>
                 </ul>
                 <a class="exp-link" href="https://jasung.diskon.com/" target="_blank">View Project →</a>
@@ -923,9 +953,9 @@ nav {
 
             <div class="exp-body">
                 <ul>
-                    <li>Cleaned and transformed sales data using Excel & Python.</li>
+                    <li>Cleaned and transformed 5,000+ rows of sales data using Excel & Python.</li>
                     <li>Built Tableau dashboards to identify sales trends & top-performing products.</li>
-                    <li>Detected seasonal peak patterns.</li>
+                    <li>Detected seasonal peak patterns and contributed insights for marketing strategy.</li>
                 </ul>
                 <a class="exp-link" href="https://drive.google.com/file/d/1n1hR-cjc3YOuUGMMxIH77KMwSMlCrD5m/view?usp=sharing" target="_blank">View Case Study →</a>
             </div>
@@ -995,28 +1025,6 @@ nav {
             </div>
         </div>
 
-        <!-- 6. Borde Ecommerce -->
-        <div class="experience-card">
-            <img src="img/Screenshot 2025-11-14 021136.png" class="exp-img" />
-
-            <div class="exp-header">
-                <div>
-                    <h3>E-Commerce Management</h3>
-                    <p class="periode">Borde Perfume | Feb 2025 - June 2025</p>
-                </div>
-                <button class="toggle-btn">⯆</button>
-            </div>
-
-            <div class="exp-body">
-                <ul>
-                    <li>Increased sales by 324% through SEO & TikTok/Shopee content optimization.</li>
-                    <li>Improved store visibility and raised monthly visitors by 99%.</li>
-                    <li>Managed product listing, ads optimization, and customer engagement.</li>
-                </ul>
-                <a class="exp-link" href="https://shopee.co.id/officialborde_?itemId=27184038803" target="_blank">See Store →</a>
-            </div>
-        </div>
-
     </div>
 </section>
 
@@ -1026,6 +1034,21 @@ nav {
     <h2>💻 PROJECTS & CASE STUDIES</h2>
     
     <div class="project-features-list">
+
+                <div class="project-feature-item reverse">
+            
+            <div class="project-feature-media">
+                <img src="img/churn.png" alt="Machine Learning Model">
+            </div>
+            
+            <div class="project-feature-content">
+                <h3>Visualization Dashboard Design for Customer Churn Prediction</h3>
+                <span class="tech-badges">Qlik Analytics • Qlik Predict Machine Learning</span>
+                <p>Developed a customer churn prediction model using Qlik Predict by analyzing customer behavior patterns to estimate the likelihood of churn in the following year.</p>
+                <a href="https://drive.google.com/file/d/1hj1nvo3fs8l3jEQPoJd8y5gXDrZWLh8n/view?usp=sharing" target="_blank" class="cta-button secondary">See Detail</a>
+            </div>
+            
+        </div>
 
         <div class="project-feature-item">
             
@@ -1122,6 +1145,7 @@ nav {
             </div>
             
         </div>
+
 
 
     </div>
@@ -1372,10 +1396,10 @@ nav {
                         <span class="skill-tag">Google Workspace</span>
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Qlik Analytics</span>
                         <span class="skill-tag">Tableau</span>
                         <span class="skill-tag">Power BI</span>
                         <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">E-Commerce Platforms</span>
                     </div>
                 </div>
             </div>
@@ -1433,7 +1457,4 @@ nav {
 
 
 </html>
-
-
-
 
